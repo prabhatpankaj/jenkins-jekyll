@@ -2,6 +2,9 @@ pipeline {
     agent any
 
     stages {
+        stage('Checkout') {
+            checkout scm
+        }
         stage('Load Plugins') {
             steps {
                 sh "gem install octopress-minify-html"
@@ -22,9 +25,8 @@ pipeline {
 
     post {
         success {
-            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '_site', reportFiles: 'index.html', reportName: 'mydomain.com', reportTitles: ''])
-            sh "mv _site mydomain.com"
-            archiveArtifacts artifacts: 'jekyll-jenkins.com/', fingerprint: true, onlyIfSuccessful: true
+            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '_site', reportFiles: 'index.html', reportTitles: ''])
+            archiveArtifacts artifacts: 'jenkins-jekyll/', fingerprint: true, onlyIfSuccessful: true
             }
     }
 }
