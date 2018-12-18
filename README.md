@@ -12,3 +12,5 @@ cd jenkins-jekyll/docker-compose
 docker-compose up
 
 ```
+
+* update Jenkinsfile as per requirements and update it into jenkinspileline . 
