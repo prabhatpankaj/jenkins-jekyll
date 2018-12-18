@@ -16,6 +16,8 @@ RUN mkdir -p /mnt/html-sites && chown jenkins:jenkins -R /mnt/html-sites
 
 # Update permissions on Ruby gems folder to allow builds to install new plugins
 RUN chown -R root:jenkins /usr/lib/ruby/gems && chmod 770 -R /usr/lib/ruby/gems
+RUN chown -R root:jenkins /var/lib/gems && chmod 770 -R /var/lib/gems
+
 
 # drop back to the regular jenkins user - good practice
 USER jenkins
