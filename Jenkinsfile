@@ -27,7 +27,7 @@ pipeline {
 
     post {
         success {
-            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '_site', reportFiles: 'index.html', reportTitles: ''])
+            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '_site', reportFiles: 'index.html', reportName: 'domain.com', reportTitles: ''])
             archiveArtifacts(allowEmptyArchive: true, artifacts: '', fingerprint: true, onlyIfSuccessful: true)
             }
     }
