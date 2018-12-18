@@ -3,7 +3,9 @@ pipeline {
 
     stages {
         stage('Checkout') {
-            checkout scm
+            steps {
+                checkout scm
+            }
         }
         stage('Load Plugins') {
             steps {
@@ -26,7 +28,7 @@ pipeline {
     post {
         success {
             publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '_site', reportFiles: 'index.html', reportTitles: ''])
-            archiveArtifacts artifacts: 'jenkins-jekyll/', fingerprint: true, onlyIfSuccessful: true
+            archiveArtifacts(allowEmptyArchive: true, artifacts: '', fingerprint: true, onlyIfSuccessful: true)
             }
     }
 }
